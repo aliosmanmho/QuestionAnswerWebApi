@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "+N3T07a4kKdt8IPw79uag0eY9Y2YmAoKoU86sRqrfN850EpGQF8fccYiOGz1Mg5pMWGn3ptjLGIs47DSdjaywg==",
+  "dgSpecHash": "QKCv3G0vq6QVi87h+pwR0klu3WksmRNkBn/DDNFJKB31c+OL9jrAUaZpx8l1ocxtEayF6DzXo3yFoFSsAxjXUg==",
   "success": true,
   "projectFilePath": "C:\\Flutter Projects\\QuestionAnswerWebApi\\QuestionAnswerWebApi\\QuestionAnswerWebApi.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\DEVALI\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.8\\microsoft.aspnetcore.jsonpatch.3.1.8.nupkg.sha512",
+    "C:\\Users\\DEVALI\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.8\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.8.nupkg.sha512",
+    "C:\\Users\\DEVALI\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\DEVALI\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\DEVALI\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512"
+  ],
   "logs": []
 }
