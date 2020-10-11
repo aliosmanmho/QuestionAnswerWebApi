@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using QuestionAnswerApi;
 
 namespace QuestionAnswerApi.Controllers
 {
@@ -11,7 +12,8 @@ namespace QuestionAnswerApi.Controllers
     [Route("[controller]")]
     public class QuestionAnswerController : ControllerBase
     {
-       private static  Question[] questions = new []{
+        
+       private static  IEnumerable<Question> questions = new []{
            new Question(
                query:@"Query Example 1",
                 answer : "Answer 1"
@@ -58,11 +60,11 @@ namespace QuestionAnswerApi.Controllers
         {
             if(question==null || string.IsNullOrEmpty(question.Query) ||string.IsNullOrEmpty(question.Answer))
                 return  BadRequest("Query and answer should not be empty");
-            if(questions.Length>1000)
+            if(questions.Count()>1000)
                 return  BadRequest("There is a lot of data! Please delete data first.");
             if(questions.Any(x=>x.Query.ToUpper().Contains(question.Query)))
                 return  BadRequest("Question already attached");
-           questions.Append(question);
+           questions = questions.Concat(new []{question});
            return Ok(questions);
         }
         [HttpPost]
@@ -74,5 +76,6 @@ namespace QuestionAnswerApi.Controllers
            questions =  questions.Where(x=>x.Query != question.Query).ToArray();
            return Ok(questions);
         }
+        
     }
 }
