@@ -62,7 +62,7 @@ namespace QuestionAnswerApi.Controllers
                 return  BadRequest("Query and answer should not be empty");
             if(questions.Count()>1000)
                 return  BadRequest("There is a lot of data! Please delete data first.");
-            if(questions.Any(x=>x.Query.ToUpper().Contains(question.Query)))
+            if(questions.Any(x=>x.Query.ToUpper().Contains(question.Query.ToUpper())))
                 return  BadRequest("Question already attached");
            questions = questions.Concat(new []{question});
            return Ok(questions);
