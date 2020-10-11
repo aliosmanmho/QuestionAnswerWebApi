@@ -45,33 +45,33 @@ namespace QuestionAnswerApi.Controllers
         }
         [HttpPost]
         [Route("GetAnswer")]
-        public ActionResult GetAnswer([FromQuery]string query)
+        public ActionResult GetAnswer([FromBody]Question question)
         {
-             if(string.IsNullOrEmpty(query))
+             if(question ==null || string.IsNullOrEmpty(question.Query))
                 return  BadRequest("Query should not be empty");
            
-           return Ok(questions.Where(x=>x.Query.ToUpper().Contains(query.ToUpper())));
+           return Ok(questions.Where(x=>x.Query.ToUpper().Contains(question.Query.ToUpper())));
         }
         [HttpPost]
         [Route("AddQuery")]
-        public ActionResult AddQuery([FromBody]string query,string answer)
+        public ActionResult AddQuery([FromBody]Question question)
         {
-            if(string.IsNullOrEmpty(query) ||string.IsNullOrEmpty(answer))
+            if(question==null || string.IsNullOrEmpty(question.Query) ||string.IsNullOrEmpty(question.Answer))
                 return  BadRequest("Query and answer should not be empty");
             if(questions.Length>1000)
                 return  BadRequest("There is a lot of data! Please delete data first.");
-            if(questions.Any(x=>x.Query.ToUpper().Contains(query)))
+            if(questions.Any(x=>x.Query.ToUpper().Contains(question.Query)))
                 return  BadRequest("Question already attached");
-           questions.Append(new Question(query:query,answer:answer));
+           questions.Append(question);
            return Ok(questions);
         }
         [HttpPost]
         [Route("RemoveQuery")]
-        public ActionResult RemoveQuery([FromQuery]string query)
+        public ActionResult RemoveQuery([FromBody]Question question)
         {
-            if(string.IsNullOrEmpty(query) )
+            if(question==null || string.IsNullOrEmpty(question.Query) )
                 return  BadRequest("Query should not be empty");
-           questions =  questions.Where(x=>x.Query != query).ToArray();
+           questions =  questions.Where(x=>x.Query != question.Query).ToArray();
            return Ok(questions);
         }
     }
